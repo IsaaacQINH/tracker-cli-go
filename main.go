@@ -4,7 +4,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/tracker-cli-go/cli"
+	"github.com/isaaacqinh/tracker-cli-go/cli"
 )
 
 func main() {
