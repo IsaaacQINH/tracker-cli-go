@@ -1,4 +1,4 @@
-module github.com/tracker-cli-go
+module github.com/isaaacqinh/tracker-cli-go
 
 go 1.20
 
