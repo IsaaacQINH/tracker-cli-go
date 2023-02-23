@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/fatih/color"
-	"github.com/tracker-cli-go/pkg/api"
+	"github.com/isaaacqinh/tracker-cli-go/pkg/api"
 )
 
 func RunCommand(args CommadArgs) {
