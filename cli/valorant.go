@@ -5,6 +5,7 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/isaaacqinh/tracker-cli-go/pkg/api"
+	"github.com/isaaacqinh/tracker-cli-go/pkg/helper"
 )
 
 func RunCommand(args CommadArgs) {
@@ -21,9 +22,12 @@ func RunCommand(args CommadArgs) {
 	accountData := vapi.GetPlayer(args.Player, args.Tagline)
 	statsData := vapi.GetMMRData(args.Region, args.Player, args.Tagline)
 
-	fmt.Printf("\nPlayer UUID: %s", accountData.Data.Puuid)
-	fmt.Printf("\nAccount Level: %d", accountData.Data.AccountLevel)
-	fmt.Printf("\nElo: %d", statsData.Data.CurrentData.Elo)
-	fmt.Printf("\nCurrent Rank: %s", statsData.Data.CurrentData.CurrentTierString)
+	fmt.Printf("\nPlayer UUID: %s", accountData.Puuid)
+	fmt.Printf("\nAccount Level: %d", accountData.AccountLevel)
+	fmt.Printf("\nElo: %d", statsData.CurrentData.Elo)
+	fmt.Printf("\nCurrent Rank: %s", statsData.CurrentData.CurrentTierString)
+	fmt.Printf("\nLatest Change: %s", helper.ArrowFromMMRChange(statsData.CurrentData.LastMMRChange))
+	fmt.Print("\n")
+	fmt.Printf("\nHighest Rank: %s (%s)", statsData.HighestRank.TierString, helper.FormatSeasonString(statsData.HighestRank.Season))
 	fmt.Print("\n")
 }
