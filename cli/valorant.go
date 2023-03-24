@@ -22,7 +22,6 @@ func RunCommand(args CommadArgs) {
 	accountData := vapi.GetPlayer(args.Player, args.Tagline)
 	statsData := vapi.GetMMRData(args.Region, args.Player, args.Tagline)
 
-	fmt.Printf("\nPlayer UUID: %s", accountData.Puuid)
 	fmt.Printf("\nAccount Level: %d", accountData.AccountLevel)
 	fmt.Printf("\nElo: %d", statsData.CurrentData.Elo)
 	fmt.Printf("\nCurrent Rank: %s", statsData.CurrentData.CurrentTierString)
