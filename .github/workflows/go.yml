@@ -5,7 +5,7 @@ name: Go
 
 on:
   push:
-    branches: [ "releases/**" ]
+    tags: [ "v*" ]
 
 jobs:
 
@@ -21,6 +21,12 @@ jobs:
 
     - name: Build
       run: go build -v ./...
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: tcg
+        path: /
+        retention-days: 30
 
     - name: Test
       run: go test -v ./...
