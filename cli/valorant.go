@@ -2,6 +2,7 @@ package cli
 
 import (
 	"fmt"
+	"math"
 
 	"github.com/fatih/color"
 	"github.com/isaaacqinh/tracker-cli-go/pkg/api"
@@ -23,7 +24,7 @@ func RunCommand(args CommadArgs) {
 	statsData := vapi.GetMMRData(args.Region, args.Player, args.Tagline)
 
 	fmt.Printf("\nAccount Level: %d", accountData.AccountLevel)
-	fmt.Printf("\nElo: %d", statsData.CurrentData.Elo)
+	fmt.Printf("\nElo: %d\tRR: %d", statsData.CurrentData.Elo, int64(math.Mod(float64(statsData.CurrentData.Elo), float64(100))))
 	fmt.Printf("\nCurrent Rank: %s", statsData.CurrentData.CurrentTierString)
 	fmt.Printf("\nLatest Change: %s", helper.ArrowFromMMRChange(statsData.CurrentData.LastMMRChange))
 	fmt.Print("\n")
