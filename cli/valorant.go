@@ -17,8 +17,14 @@ func RunCommand(args CommadArgs) {
 		},
 	}
 
+	player := color.CyanString(args.Player)
+
+	if args.Player == "Sapphic Dino" {
+		player = color.MagentaString(args.Player)
+	}
+
 	fmt.Print("\n")
-	fmt.Printf("Fetching player data for %s#%s", color.CyanString(args.Player), color.GreenString(args.Tagline))
+	fmt.Printf("Fetching player data for %s#%s", player, color.GreenString(args.Tagline))
 
 	accountData := vapi.GetPlayer(args.Player, args.Tagline)
 	statsData := vapi.GetMMRData(args.Region, args.Player, args.Tagline)
